@@ -1,0 +1,166 @@
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="css/styles.css">
+    <link rel="shortcut icon" href="../img/favicon-96x96.png" type="image/x-icon">
+    <title>Musicando (Contactanos)</title>
+    <style>
+        section {
+            display: flex;
+            flex-direction: column;
+            align-items: flex-start; /* Alineado a la izquierda */
+            margin: 20px;
+            padding: 10px;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+            width: 100%;
+            max-width: 400px;
+        }
+
+        form {
+            list-style-type: none; /* Quitar los estilos de lista predeterminados */
+            padding: 0; /* Quitar el relleno predeterminado */
+        }
+
+        form > li {
+            margin-bottom: 10px; /* Separación entre elementos de la lista */
+        }
+        #limpiarBtn,
+        #enviarBtn {
+            margin-top: 10px;
+        }
+
+        /* Estilos específicos para el segundo formulario */
+        #otrosDatosForm {
+            margin-top: 20px; /* Separación entre formularios */
+        }
+
+        /* Estilos para el contenedor del recuadro azul */
+        #recuadroAzul {
+            margin-top: 20px; /* Separación entre formularios y recuadro */
+            padding: 10px;
+            border: 1px solid #3498db;
+            border-radius: 5px;
+            cursor: pointer;
+        }
+
+        #recuadroAzul.clicked {
+            background-color: #3498db;
+            color: white;
+        }
+        #limpiarBtn {
+            margin-top: 10px;
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <h1>La web de las artes</h1>
+        <h2>SECCION: Contactanos</h2>
+        <nav>
+            <ul>
+                <li><a href="../index.html/index.html">Inicio</a></li>
+                <li><a href="../html/musica.html">Música</a></li>
+                <li><a href="../html/cine.html">Cine</a></li>
+                <li><a href="../html/generosLiterarios.html">Géneros Literarios</a></li>
+                <li><a href="../html/multimedia.html">Multimedia</a></li>
+                <li><a href="../html/contactanos.html">Contactanos</a></li>
+            </ul>
+        </nav>
+    </header>
+    <section>
+        <form id="formulario1" action="#" method="post">
+            <li>
+                <label for="nombre">Nombre*:</label>
+                <input type="text" id="nombre" name="nombre" required>
+            </li>
+    
+            <li>
+                <label for="apellido">Apellido*:</label>
+                <input type="text" id="apellido" name="apellido" required>
+            </li>
+    
+            <li>
+                <label for="email">Email*:</label>
+                <input type="email" id="email" name="email" required>
+            </li>
+    
+            <li>
+                <label for="fechaNacimiento">Fecha de Nacimiento*:</label>
+                <input type="date" id="fechaNacimiento" name="fechaNacimiento" required>
+            </li>
+    
+            <li>
+                <label for="edad">Edad*:</label>
+                <input type="number" id="edad" name="edad" required>
+            </li>
+    
+            <li>
+                <label for="sexo">Sexo:</label>
+                <select id="sexo" name="sexo">
+                    <option value="hombre">Hombre</option>
+                    <option value="mujer">Mujer</option>
+                </select>
+            </li>
+    
+            <li>
+                <label for="pais">País:</label>
+                <input type="text" id="pais" name="pais">
+            </li>
+        </form>
+    </section>
+    <section id="otrosDatosForm">
+        <form id="formulario2" action="#" method="post">
+            <li>
+                <label for="mensaje">Mensaje:</label>
+                <textarea id="mensaje" name="mensaje"></textarea>
+            </li>
+
+            <li>
+                <label for="adjuntarFoto">Adjuntar una foto:</label>
+                <input type="file" id="adjuntarFoto" name="adjuntarFoto">
+            </li>
+        </form>
+    </section>
+    <label>
+        <input type="checkbox" id="aceptoTerminos" name="aceptoTerminos">
+        He leido las condiciones
+    </label>
+    <p></p>
+    <button id="limpiarBtn" type="button" onclick="limpiarFormularios()">Limpiar</button>
+    <button id="enviarBtn" type="button" onclick="validarFormulario()">Enviar</button>
+    <h1>Centro de referencia</h1>
+    <iframe
+        width="600"
+        height="450"
+        style="border:0"
+        loading="lazy"
+        allowfullscreen
+        src="https://www.google.es/maps/place/CIFP+C%C3%A9sar+Manrique/@28.4560642,-16.2858258,17z/data=!3m1!4b1!4m6!3m5!1s0xc41cceee5a8035f:0xab9f2a74d9e68b51!8m2!3d28.4560642!4d-16.2832455!16s%2Fg%2F12qf6zq8p?entry=ttu">
+    </iframe>
+    <script>
+        function cambiarColorRecuadro() {
+            document.getElementById('recuadroAzul').style.backgroundColor = '#1abc9c'; /* Turquesa */
+        }
+
+        function limpiarFormularios() {
+            document.getElementById('formulario1').reset();
+            document.getElementById('formulario2').reset();
+        }
+        function enviarFormulario() {
+            var formulario1 = document.getElementById('formulario1');
+            var formulario2 = document.getElementById('formulario2');
+            var mensajeError = document.getElementById('mensajeError');
+            var aceptoTerminos = document.getElementById('aceptoTerminos');
+
+        if (!formulario1.checkValidity() || !formulario2.checkValidity()) {
+                mensajeError.innerText = "Por favor, completa todos los campos obligatorios.";
+            } else if (!aceptoTerminos.checked) {
+                mensajeError.innerText = "Debes aceptar los términos y condiciones.";
+            } else {
+                
+                console.log("Formulario enviado");
+            }
+        }
+    </script>
+</body>
